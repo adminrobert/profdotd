@@ -28,7 +28,7 @@ ProfDotD_Bins=($ProfDotD_BinDir/!("${ProfDotD_Priority[*]}"))
 if [ -d "${ProfDotD_Bins[0]}" ]
 then
     IFS=':'
-    PATH="${PATH}:${ProfDotD_Priority[*]/#/${ProfDotD_BinDir}/}:${ProfDotD_Bins[*]}"
+    export PATH="${PATH}:${ProfDotD_Priority[*]/#/${ProfDotD_BinDir}/}:${ProfDotD_Bins[*]}"
 fi
 ProfDotD_PathArray=(${PATH})
 IFS="${ProfDotD_OldIFS}"
