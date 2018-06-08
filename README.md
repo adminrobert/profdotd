@@ -11,7 +11,7 @@ Profiles can get a bit messy at times specifically when trying to share certain 
 Clone this repo and source profdotd. Some where in your `~/.bashrc`:
 
 ```bash
-ProfDotD_Priority=(personal)
+ProfDotD_Priority=(personal devteam)
 
 . ~/profdotd/profdotd
 ```
@@ -28,6 +28,9 @@ bin.d
 ├── personal/
 │   ├── myscript*
 │   └── overridden*
+├── devteam/
+│   ├── dev*
+│   └── overridden* # Not found by command: which overridden
 └── test/
     ├── overridden* # Not found by command: which overridden
     └── testscript*
@@ -35,6 +38,9 @@ bin.d
 ├── personal/
 │   ├── personalonly
 │   └── shared
+├── devteam/
+│   ├── devonly
+│   └── shared # Does not get run
 └── test/
     ├── testonly
     └── shared # Does not get run
