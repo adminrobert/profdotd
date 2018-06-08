@@ -23,7 +23,7 @@ ProfDotD will create 2 directories by default in your home directory a `~/bin.d`
 your setting from `ProfDotD_Priority` determines which files get loaded and which don't. Priority items are considered first in the order specified, then all other items in alphanumeric order. Any filename loaded by an earlier profile will not get loaded in later profiles.
 
 ```bash
-$ tree -aF bin.d .profile.d
+$ tree -aF bin.d .profile.d # Asterisks denote executable scripts
 bin.d
 ├── personal/
 │   ├── myscript*
