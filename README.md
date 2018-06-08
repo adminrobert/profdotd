@@ -18,7 +18,7 @@ ProfDotD_Priority=(personal)
 
 ## How it works
 
-ProfDotD will create 2 directories by default in your home directory a `~/bin.d` and a `~/.profile.d`. These 2 directories will then contain any number of directories to sort profiles and scripts. This structure is meant to be a single level deep, and any directories nested further than shown below will be ignored.
+ProfDotD will create 2 directories by default in your home directory a `~/bin.d` and a `~/.profile.d`. These 2 directories will then contain any number of directories to organize profiles and scripts. This structure is meant to be a single level deep, and any directories nested further than shown below will be ignored.
 
 ```bash
 $ tree -aF bin.d .profile.d
@@ -27,7 +27,7 @@ bin.d
 │   ├── myscript*
 │   └── overridden*
 └── test/
-    ├── overridden* # Will not be found by (which overridden)
+    ├── overridden* # Not found by command: which overridden
     └── testscript*
 .profile.d
 ├── personal/
@@ -38,7 +38,7 @@ bin.d
     └── shared # Does not get run
 ```
 
-your setting from `ProfDotD_Priority` determines which files get loaded and which dont. Priority items are considered first in the order specified, then all other items in alphanumeric order. Any filename loaded by an earlier profile will not get loaded in later profiles.
+your setting from `ProfDotD_Priority` determines which files get loaded and which don't. Priority items are considered first in the order specified, then all other items in alphanumeric order. Any filename loaded by an earlier profile will not get loaded in later profiles.
 
 ## Configuration
 
