@@ -18,7 +18,7 @@ ProfDotD_Priority=(personal)
 
 ## How it works
 
-ProfDotD will create 2 directories by default in your home directory a `~/bin.d` and a `~/.profile.d`. These 2 directories will then contain any number of directories to sort profiles and scripts. Each end tier directory can have any number of files inside.
+ProfDotD will create 2 directories by default in your home directory a `~/bin.d` and a `~/.profile.d`. These 2 directories will then contain any number of directories to sort profiles and scripts. This structure is meant to be a single level deep, and any directories nested further than shown below will be ignored.
 
 ```bash
 $ tree -aF bin.d .profile.d
