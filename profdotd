@@ -31,8 +31,8 @@ then
     PATH="${PATH}:${ProfDotD_Priority[*]/#/${ProfDotD_BinDir}/}:${ProfDotD_Bins[*]}"
 fi
 ProfDotD_PathArray=(${PATH})
-ProfDotD_Debug_Msg "${ProfDotD_PathArray[@]}"
 IFS="${ProfDotD_OldIFS}"
+ProfDotD_Debug_Msg "### Start path debug/order" "${ProfDotD_PathArray[@]}" "### End path debug/order" ""
 
 # The general concept is that a file with the same name will not be loaded twice, priority being first to run.
 ProfDotD_Overridden=()
