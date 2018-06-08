@@ -1,0 +1,53 @@
+#!/bin/bash
+
+ProfDotD_Debug_Msg () {
+    [ "${ProfDotD_Debug}" == 'true' ] && printf "%s\n" "$@" || return 0
+}
+# this is a list of directories that will take priority
+[ -z "${ProfDotD_Priority[*]}" ] && ProfDotD_Priority=(personal)
+
+# Setting to make bash extra powerful
+shopt -s extglob
+
+# Set the base dir to something else for testing
+# ProfDotD_BaseDir="./testing"
+[ -z "${ProfDotD_BaseDir}" ] && ProfDotD_BaseDir="${HOME}"
+export ProfDotD_BaseDir="${ProfDotD_BaseDir%/}"
+ProfDotD_ProfDir="$ProfDotD_BaseDir/.profile.d"
+ProfDotD_BinDir="$ProfDotD_BaseDir/bin.d"
+
+# Setup a couple of directories
+[ -d "$ProfDotD_ProfDir" ] || mkdir $ProfDotD_ProfDir
+# Bin is sorta just an extra throw in to keep scripts separate
+[ -d "$ProfDotD_BinDir" ] || mkdir $ProfDotD_BinDir
+
+# Setup the Path real fast with bin.d
+ProfDotD_OldIFS="${IFS}"
+IFS='|'
+ProfDotD_Bins=($ProfDotD_BinDir/!("${ProfDotD_Priority[*]}"))
+if [ -d "${ProfDotD_Bins[0]}" ]
+then
+    IFS=':'
+    PATH="${PATH}:${ProfDotD_Priority[*]/#/${ProfDotD_BinDir}/}:${ProfDotD_Bins[*]}"
+fi
+ProfDotD_PathArray=(${PATH})
+ProfDotD_Debug_Msg "${ProfDotD_PathArray[@]}"
+IFS="${ProfDotD_OldIFS}"
+
+# The general concept is that a file with the same name will not be loaded twice, priority being first to run.
+ProfDotD_Overridden=()
+for ProfDotD_profdir in "${ProfDotD_Priority[@]/#/${ProfDotD_ProfDir}/}" ${ProfDotD_ProfDir}/*
+do
+    for ProfDotD_source in ${ProfDotD_profdir}/*
+    do
+        [ -f "${ProfDotD_source}" ] || continue
+        ProfDotD_basename="${ProfDotD_source##*/}"
+        [[ "${ProfDotD_Overridden[*]}" =~ (^| )${ProfDotD_basename}($| ) ]] \
+            && { ProfDotD_Debug_Msg "Not loading: ${ProfDotD_source}"; continue;}
+        ProfDotD_Debug_Msg "Loading: ${ProfDotD_source}"
+        source "${ProfDotD_source}"
+        ProfDotD_Overridden+=("${ProfDotD_basename}")
+    done
+
+done
+

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+ProfDotD_BaseDir="${PWD}/testing"
+ProfDotD_Debug='true'
+
+. profdotd
+
+cd ansible
+
+ansible-playbook profdotd.yml

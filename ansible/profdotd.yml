@@ -1,0 +1,8 @@
+- name: Run the profdotd role
+  hosts: localhost
+  connection: local
+  become: no
+  roles:
+    - profdotd
+  tags:
+    - profdotd

@@ -1,0 +1,13 @@
+- set_fact: basedir="{{ lookup('env','ProfDotD_BaseDir') }}"
+
+- name: place the personal profile
+  file:
+    path: "{{basedir}}/.profile.d/personal"
+    state: directory
+
+- name: place all files
+  copy:
+    src: "{{item}}"
+    dest: "{{basedir}}/.profile.d/personal"
+  with_fileglob:
+    - "profile.d/personal/*"
