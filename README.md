@@ -20,6 +20,8 @@ ProfDotD_Priority=(personal)
 
 ProfDotD will create 2 directories by default in your home directory a `~/bin.d` and a `~/.profile.d`. These 2 directories will then contain any number of directories to organize profiles and scripts. This structure is meant to be a single level deep, and any directories nested further than shown below will be ignored.
 
+your setting from `ProfDotD_Priority` determines which files get loaded and which don't. Priority items are considered first in the order specified, then all other items in alphanumeric order. Any filename loaded by an earlier profile will not get loaded in later profiles.
+
 ```bash
 $ tree -aF bin.d .profile.d
 bin.d
@@ -37,8 +39,6 @@ bin.d
     ├── testonly
     └── shared # Does not get run
 ```
-
-your setting from `ProfDotD_Priority` determines which files get loaded and which don't. Priority items are considered first in the order specified, then all other items in alphanumeric order. Any filename loaded by an earlier profile will not get loaded in later profiles.
 
 ## Configuration
 
