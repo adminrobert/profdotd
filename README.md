@@ -34,7 +34,7 @@ bin.d
 │   ├── personalonly
 │   └── shared
 └── test/
-    ├── adtonly
+    ├── testonly
     └── shared # Does not get run
 ```
 
