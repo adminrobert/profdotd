@@ -4,7 +4,7 @@ Organized profile sharing
 
 ## Premise
 
-Profiles can get a bit messy at times specifically when trying to share certain pieces of profiles with a team. This project aims to make things a little easier to keep track of different aspects of your profile.
+Profiles can get a bit messy at times, specifically when trying to share certain pieces of profiles with a team. This project aims to make things a little easier to keep track of different aspects of your profile.
 
 ## Getting started
 
@@ -27,12 +27,12 @@ $ tree -aF bin.d .profile.d
 bin.d
 ├── personal/
 │   ├── myscript*
-│   └── overridden*
+│   └── commonscript*
 ├── devteam/
 │   ├── dev*
-│   └── overridden* # Not found by command: which overridden
+│   └── commonscript* # Not found by command: which commonscript
 └── test/
-    ├── overridden* # Not found by command: which overridden
+    ├── commonscript* # Not found by command: which commonscript
     └── testscript*
 .profile.d
 ├── personal/
